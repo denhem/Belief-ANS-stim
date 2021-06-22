@@ -1,0 +1,1209 @@
+{
+    "frames": {
+        "instruction-survey-multiple": {
+            "kind": "exp-lookit-survey",
+            "formSchema": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "parentresponse": {
+                            "type": "string",
+                            "title": "Which of these can you say after your child answers a question?",
+                            "enum": [
+                                "Okay!",
+                                "Hmm, I don't think so.",
+                                "Are you sure?"
+                            ]
+                        },
+                        "qfeedback": {
+                            "type": "text",
+                            "title": "We're interested in how children think about these questions, which might be different from how adults think about them. It's important not to 'give away' any of your own thoughts or answers."
+                        },
+                        "parentencourage": {
+                            "type": "string",
+                            "title": "What should you do if your child is distracted during a question?",
+                            "enum": [
+                                "Quit the study.",
+                                "Encourage them to keep watching and listening.",
+                                "Give them a hint."
+                            ]
+                        },
+                        "encfeedback": {
+                            "type": "text",
+                            "title": "It's fine if your child gets distracted at some points during the study! Sometimes a replay option will be available if they didn't hear what was said."
+                        },
+                        "parentstopearly": {
+                            "type": "string",
+                            "title": "Is it ok to stop the study early?",
+                            "enum": [
+                                "No, I must complete the full study.",
+                                "Yes, I can press F1 or ctrl-X or close the tab at any time."
+                            ]
+                        },
+                        "earlyfeedback": {
+                            "type": "text",
+                            "title": "It's great if you can complete the study, but if your child is upset or either of you do not want to continue, you do not need to complete the study."
+                        }
+                    },
+                    "dependencies": {
+                        "qfeedback": [
+                            "parentresponse"
+                        ],
+                        "encfeedback": [
+                            "parentencourage"
+                        ],
+                        "earlyfeedback": [
+                            "parentstopearly"
+                        ]
+                    }
+                },
+                "options": {
+                    "fields": {
+                        "parentresponse": {
+                            "type": "radio",
+                            "message": "Please select an answer",
+                            "validator": "required-field",
+                            "sort": false,
+                            "removeDefaultNone": true,
+                            "order": 1
+                        },
+                        "qfeedback": {
+                            "type": "text",
+                            "validator": "required-field",
+                            "placeholder": "Try selecting a different answer above!",
+                            "disabled": true,
+                            "dependencies": {
+                                "parentresponse": [
+                                    "Hmm, I don't think so.",
+                                    "Are you sure?"
+                                ]
+                            },
+                            "order": 2
+                        },
+                        "parentencourage": {
+                            "type": "radio",
+                            "message": "Please select an answer",
+                            "validator": "required-field",
+                            "sort": false,
+                            "removeDefaultNone": true,
+                            "order": 3
+                        },
+                        "encfeedback": {
+                            "type": "text",
+                            "validator": "required-field",
+                            "placeholder": "Try selecting a different answer above!",
+                            "disabled": true,
+                            "dependencies": {
+                                "parentencourage": [
+                                    "Quit the study.",
+                                    "Give them a hint."
+                                ]
+                            },
+                            "order": 4
+                        },
+                        "parentstopearly": {
+                            "type": "radio",
+                            "message": "Please select an answer",
+                            "validator": "required-field",
+                            "sort": false,
+                            "removeDefaultNone": true,
+                            "order": 5
+                        },
+                        "earlyfeedback": {
+                            "type": "text",
+                            "validator": "required-field",
+                            "placeholder": "Try selecting a different answer above!",
+                            "disabled": true,
+                            "dependencies": {
+                                "parentstopearly": [
+                                    "No, I must complete the full study."
+                                ]
+                            },
+                            "order": 6
+                        }
+                    }
+                }
+            }
+        },
+        "instructions":{
+            "kind": "choice",
+            "sampler": "random-parameter-set",
+            "frameList": [
+                {
+                    "audio": "AUDIO1",
+                    "images": [
+                        {
+                            "id": "stim",
+                            "src": "STIM0",
+                            "position": "fill",
+                            "nonChoiceOption": true
+                        }
+                    ],
+                    "autoProceed": true,
+                    "choiceRequired": false,
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "For now, just listen with your child! When we get to the questions, more instructions will appear in this space.",
+                        "title": "For Parents"
+                    }
+                },
+                {
+                    "audio": "AUDIO1",
+                    "images": [
+                        {
+                            "id": "stim",
+                            "src": "STIM1",
+                            "position": "fill",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "left",
+                            "src": "left.jpg",
+                            "top": "65.5",
+                            "left": "30.5",
+                            "width": "8",
+                            "correct": "PRACTICE1LEFTCORRECT",
+                            "feedbackAudio": "PRACTICE1LEFTFEEDBACK",
+                            "feedbackText": "PRACTICE1LEFTTEXT"
+                        },
+                        {
+                            "id": "right",
+                            "src": "right.jpg",
+                            "top": "65.5",
+                            "left": "62.5",
+                            "width": "8",
+                            "correct": "PRACTICE1RIGHTCORRECT",
+                            "feedbackAudio": "PRACTICE1RIGHTFEEDBACK",
+                            "feedbackText": "PRACTICE1RIGHTTEXT"
+                        }
+                    ],
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents"
+                    },
+                    "correctChoiceRequired": true
+                },
+                {
+                    "audio": "AUDIO1",
+                    "images": [
+                        {
+                            "id": "stim",
+                            "src": "STIM2",
+                            "position": "fill",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "left",
+                            "src": "left.jpg",
+                            "top": "65.5",
+                            "left": "30.5",
+                            "width": "8",
+                            "correct": "PRACTICE2LEFTCORRECT",
+                            "feedbackAudio": "PRACTICE2LEFTFEEDBACK",
+                            "feedbackText": "PRACTICE2LEFTTEXT"
+                        },
+                        {
+                            "id": "right",
+                            "src": "right.jpg",
+                            "top": "65.5",
+                            "left": "62.5",
+                            "width": "8",
+                            "correct": "PRACTICE2RIGHTCORRECT",
+                            "feedbackAudio": "PRACTICE2RIGHTFEEDBACK",
+                            "feedbackText": "PRACTICE2RIGHTTEXT"
+                        }
+                    ],
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents"
+                    },
+                    "correctChoiceRequired": true
+                },
+                {
+                    "audio": "practicewhy",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "leftpractice2.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "rightpractice2.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        }
+                    ],
+                    "choiceRequired": false,
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Encourage your child to answer the question out loud. \nWe're interested in what your child thinks without your help, so please don't give them any hints or tell them whether you agree!",
+                        "title": "For Parents"
+                    }
+                },
+                {
+                    "kind": "exp-lookit-text",
+                    "blocks": [
+                        {
+                            "text": "You just finished practicing what you'll see during the study, now it's time to actually do the study! Press next to begin the study when you're ready.",
+                            "image": {
+                                "alt": "Signpost image",
+                                "src": "https://raw.githubusercontent.com/lookit/template-study-stim/master/bothright/img/arrows/4.png"
+                            },
+                            "title": "Road Map"
+                        }
+                    ],
+                    "showPreviousButton": true
+                },
+                {
+                    "audio": "letsgo",
+                    "autoProceed": true,
+                    "choiceRequired": false
+                },
+                {
+                    "audio": "AUDIO1",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left1.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right1.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "top",
+                            "src": "TOP1",
+                            "top": "20",
+                            "left": "40",
+                            "width": "20"
+                        },
+                        {
+                            "id": "bottom",
+                            "src": "BOTTOM1",
+                            "top": "60",
+                            "left": "40",
+                            "width": "20"
+                        }
+                    ],
+                    "highlights": "HIGHLIGHTS1",
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents [Question 1 of 5]"
+                    }
+                },
+                {
+                    "audio": "AUDIO2",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left2.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right2.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "top",
+                            "src": "TOP2",
+                            "top": "20",
+                            "left": "40",
+                            "width": "20"
+                        },
+                        {
+                            "id": "bottom",
+                            "src": "BOTTOM2",
+                            "top": "60",
+                            "left": "40",
+                            "width": "20"
+                        }
+                    ],
+                    "highlights": "HIGHLIGHTS2",
+                    "parentTextBlock": {
+                        "css": {
+                            "font": "13pt sans-serif"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents [Question 2 of 5]"
+                    }
+                },
+                {
+                    "audio": "AUDIO3",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left3.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right3.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "top",
+                            "src": "TOP3",
+                            "top": "20",
+                            "left": "40",
+                            "width": "20"
+                        },
+                        {
+                            "id": "bottom",
+                            "src": "BOTTOM3",
+                            "top": "60",
+                            "left": "40",
+                            "width": "20"
+                        }
+                    ],
+                    "highlights": "HIGHLIGHTS3",
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents [Question 3 of 5]"
+                    }
+                },
+                {
+                    "audio": "AUDIO4",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left4.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right4.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "top",
+                            "src": "TOP4",
+                            "top": "20",
+                            "left": "40",
+                            "width": "20"
+                        },
+                        {
+                            "id": "bottom",
+                            "src": "BOTTOM4",
+                            "top": "60",
+                            "left": "40",
+                            "width": "20"
+                        }
+                    ],
+                    "highlights": "HIGHLIGHTS4",
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents [Question 4 of 5]"
+                    }
+                },
+                {
+                    "audio": "audiowhy",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left4.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right4.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        }
+                    ],
+                    "choiceRequired": false,
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Encourage your child to answer the question out loud.\nWe're interested in what your child thinks without your help, so please don't give them any hints or tell them whether you agree!",
+                        "title": "For Parents [Question 5 of 5]"
+                    }
+                }
+            ],
+            "parameterSets": [
+                {
+                    "STIM0": "you_bg.jpg",
+                    "STIM1": "you_practice_1.jpg",
+                    "STIM2": "you_practice_2.jpg",
+                    "AUDIO1": "whichhasmore"
+                }
+            ],
+            "commonFrameProperties": {
+                "kind": "exp-lookit-images-audio",
+                "baseDir": "https://raw.githubusercontent.com/denhem/Belief-ANS-stim/master/",
+                "audioTypes": [
+                    "mp3"
+                ],
+                "autoProceed": false,
+                "doRecording": true,
+                "choiceRequired": true,
+                "showPreviousButton": false,
+                "allowUserPause": false,
+                "waitForRecordingMessageColor": "black"
+            }
+        },
+        "alltrials": {
+            "kind": "choice",
+            "sampler": "random-parameter-set",
+            "frameList": [
+                {
+                    "audio": "AUDIO1",
+                    "images": [
+                        {
+                            "id": "stim",
+                            "src": "STIM0",
+                            "position": "fill",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "left",
+                            "src": "left.jpg",
+                            "top": "65.5",
+                            "left": "30.5",
+                            "width": "8"
+                        },
+                        {
+                            "id": "right",
+                            "src": "right.jpg",
+                            "top": "65.5",
+                            "left": "62.5",
+                            "width": "8"
+                        }
+                    ],
+                    "highlights": "HIGHLIGHTSPRACTICE1",
+                    "autoProceed": true,
+                    "choiceRequired": false,
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "For now, just listen with your child! When we get to the questions, more instructions will appear in this space.",
+                        "title": "For Parents"
+                    }
+                },
+                {
+                    "audio": "AUDIO1",
+                    "images": [
+                        {
+                            "id": "stim",
+                            "src": "STIM1",
+                            "position": "fill",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "left",
+                            "src": "left.jpg",
+                            "top": "65.5",
+                            "left": "30.5",
+                            "width": "8",
+                            "correct": "PRACTICE1LEFTCORRECT",
+                            "feedbackAudio": "PRACTICE1LEFTFEEDBACK",
+                            "feedbackText": "PRACTICE1LEFTTEXT"
+                        },
+                        {
+                            "id": "right",
+                            "src": "right.jpg",
+                            "top": "65.5",
+                            "left": "62.5",
+                            "width": "8",
+                            "correct": "PRACTICE1RIGHTCORRECT",
+                            "feedbackAudio": "PRACTICE1RIGHTFEEDBACK",
+                            "feedbackText": "PRACTICE1RIGHTTEXT"
+                        }
+                    ],
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents"
+                    },
+                    "correctChoiceRequired": true
+                },
+                {
+                    "audio": "AUDIO1",
+                    "images": [
+                        {
+                            "id": "stim",
+                            "src": "STIM2",
+                            "position": "fill",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "left",
+                            "src": "left.jpg",
+                            "top": "65.5",
+                            "left": "30.5",
+                            "width": "8",
+                            "correct": "PRACTICE2LEFTCORRECT",
+                            "feedbackAudio": "PRACTICE2LEFTFEEDBACK",
+                            "feedbackText": "PRACTICE2LEFTTEXT"
+                        },
+                        {
+                            "id": "right",
+                            "src": "right.jpg",
+                            "top": "65.5",
+                            "left": "62.5",
+                            "width": "8",
+                            "correct": "PRACTICE2RIGHTCORRECT",
+                            "feedbackAudio": "PRACTICE2RIGHTFEEDBACK",
+                            "feedbackText": "PRACTICE2RIGHTTEXT"
+                        }
+                    ],
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents"
+                    },
+                    "correctChoiceRequired": true
+                },
+                {
+                    "audio": "practicewhy",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "leftpractice2.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "rightpractice2.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        }
+                    ],
+                    "choiceRequired": false,
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Encourage your child to answer the question out loud. \nWe're interested in what your child thinks without your help, so please don't give them any hints or tell them whether you agree!",
+                        "title": "For Parents"
+                    }
+                },
+                {
+                    "kind": "exp-lookit-text",
+                    "blocks": [
+                        {
+                            "text": "You just finished practicing what you'll see during the study, now it's time to actually do the study! Press next to begin the study when you're ready.",
+                            "image": {
+                                "alt": "Signpost image",
+                                "src": "https://raw.githubusercontent.com/lookit/template-study-stim/master/bothright/img/arrows/4.png"
+                            },
+                            "title": "Road Map"
+                        }
+                    ],
+                    "showPreviousButton": true
+                },
+                {
+                    "audio": "letsgo",
+                    "autoProceed": true,
+                    "choiceRequired": false
+                },
+                {
+                    "audio": "AUDIO1",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left1.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right1.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "top",
+                            "src": "TOP1",
+                            "top": "20",
+                            "left": "40",
+                            "width": "20"
+                        },
+                        {
+                            "id": "bottom",
+                            "src": "BOTTOM1",
+                            "top": "60",
+                            "left": "40",
+                            "width": "20"
+                        }
+                    ],
+                    "highlights": "HIGHLIGHTS1",
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents [Question 1 of 5]"
+                    }
+                },
+                {
+                    "audio": "AUDIO2",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left2.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right2.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "top",
+                            "src": "TOP2",
+                            "top": "20",
+                            "left": "40",
+                            "width": "20"
+                        },
+                        {
+                            "id": "bottom",
+                            "src": "BOTTOM2",
+                            "top": "60",
+                            "left": "40",
+                            "width": "20"
+                        }
+                    ],
+                    "highlights": "HIGHLIGHTS2",
+                    "parentTextBlock": {
+                        "css": {
+                            "font": "13pt sans-serif"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents [Question 2 of 5]"
+                    }
+                },
+                {
+                    "audio": "AUDIO3",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left3.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right3.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "top",
+                            "src": "TOP3",
+                            "top": "20",
+                            "left": "40",
+                            "width": "20"
+                        },
+                        {
+                            "id": "bottom",
+                            "src": "BOTTOM3",
+                            "top": "60",
+                            "left": "40",
+                            "width": "20"
+                        }
+                    ],
+                    "highlights": "HIGHLIGHTS3",
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents [Question 3 of 5]"
+                    }
+                },
+                {
+                    "audio": "AUDIO4",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left4.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right4.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "top",
+                            "src": "TOP4",
+                            "top": "20",
+                            "left": "40",
+                            "width": "20"
+                        },
+                        {
+                            "id": "bottom",
+                            "src": "BOTTOM4",
+                            "top": "60",
+                            "left": "40",
+                            "width": "20"
+                        }
+                    ],
+                    "highlights": "HIGHLIGHTS4",
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Please just say 'Okay!' when your child answers - don't give any hints or say whether you agree!\nIf your child can click on their own, let them click one of the answer choices, then click the Next button. If they can't click on their own, you can click for them.",
+                        "title": "For Parents [Question 4 of 5]"
+                    }
+                },
+                {
+                    "audio": "audiowhy",
+                    "images": [
+                        {
+                            "id": "left",
+                            "src": "left4.jpg",
+                            "position": "left",
+                            "nonChoiceOption": true
+                        },
+                        {
+                            "id": "right",
+                            "src": "right4.jpg",
+                            "position": "right",
+                            "nonChoiceOption": true
+                        }
+                    ],
+                    "choiceRequired": false,
+                    "parentTextBlock": {
+                        "css": {
+                            "font-size": "13pt",
+                            "padding": "0.5em"
+                        },
+                        "text": "Encourage your child to answer the question out loud.\nWe're interested in what your child thinks without your help, so please don't give them any hints or tell them whether you agree!",
+                        "title": "For Parents [Question 5 of 5]"
+                    }
+                }
+            ],
+            "parameterSets": [
+                {
+                    "STIM0": "you_bg.jpg",
+                    "STIM1": "you_practice_1.jpg",
+                    "STIM2": "you_practice_2.jpg",
+                    "AUDIO1": "whichhasmore",
+                    "PRACTICE1LEFTCORRECT": false,
+                    "PRACTICE2LEFTCORRECT": true,
+                    "PRACTICE1LEFTFEEDBACK": "sorry",
+                    "PRACTICE2LEFTFEEDBACK": "yay",
+                    "PRACTICE1LEFTTEXT": "<iframe width = '800' height = '600' src = 'https://rutgers.ca1.qualtrics.com/jfe/form/SV_ctK9YKi5ox53xki'></iframe>",
+                    "PRACTICE2LEFTTEXT": "<strong>alien_3.png</strong>",
+                    "PRACTICE1RIGHTCORRECT": true,
+                    "PRACTICE2RIGHTCORRECT": false,
+                    "PRACTICE1RIGHTFEEDBACK": "yay",
+                    "PRACTICE2RIGHTFEEDBACK": "sorry",
+                    "PRACTICE1RIGHTTEXT": "alien_3.png",
+                    "PRACTICE2RIGHTTEXT": "alien_5.png",
+                    "HIGHLIGHTSPRACTICE1": [
+                        {
+                            "range": [
+                                0.3,
+                                0.8
+                            ],
+                            "imageId": "left"
+                        },
+                        {
+                            "range": [
+                                1,
+                                1.5
+                            ],
+                            "imageId": "right"
+                        },
+                        {
+                            "range": [
+                                1.5,
+                                2
+                            ],
+                            "imageId": "stim"
+                        }
+                    ]
+                }
+            ],
+            "commonFrameProperties": {
+                "kind": "exp-lookit-images-audio",
+                "baseDir": "https://raw.githubusercontent.com/denhem/Belief-ANS-stim/master/",
+                "audioTypes": [
+                    "mp3"
+                ],
+                "autoProceed": false,
+                "doRecording": true,
+                "choiceRequired": true,
+                "showPreviousButton": false,
+                "allowUserPause": false,
+                "waitForRecordingMessageColor": "black"
+            }
+        },
+        "exit-survey": {
+            "kind": "exp-lookit-exit-survey",
+            "debriefing": {
+                "title": "Thank you for participating!",
+                "blocks": [
+                    {
+                        "title": "",
+                        "text": "This research wouldn't be possible without awesome parents like you."
+                    },
+                    {
+                        "title": "Some Background Information:",
+                        "text": "There are two broad types of moral rules: proscriptive or negative (don’t do bad things) and prescriptive or positive (do good things). You probably have examples of both in your own household!\n\nAdults tend to think it’s worse to do something bad than it is to fail to do something good. We are interested in whether children also think negative rules are more serious, even when the rules are basically the same - like “don’t lie” versus “tell the truth.” \n\n To find out, in this study we read examples of positive rules to some children, and negative rules to others. Then we asked whether two people could disagree about each rule - and both be right. That lets us measure how universal children think the rule is: is it more like an opinion, or more like a fact?\n\n We will compare answers from children who heard negative vs. positive rules to see if they already see negative rules as more serious. If children treat positive and negative rules equally, that would show that humans learn to treat negative rules as more serious - that adult behavior is a product of experience or our society. But if children already see negative rules as more serious, that would be evidence that human morality really is “based on” avoiding bad actions.\n\n This study will help us better understand the origins of moral reasoning in adults and how factors such as societal norms shape human morality."
+                    },
+                    {
+                        "title": "Links for discussing topics with your child:",
+                        "text": "<a target='_blank' href=https://www.storylineonline.net/books/when-a-dragon-moves-in/>A read aloud of a story about telling the truth.</a>\n<a target='_blank' href=https://www.storylineonline.net/books/chesters-way/>A read aloud of a story about cooperation.</a>\n<a target='_blank' href=https://www.storylineonline.net/books/the-rainbow-fish/>A read aloud of a story about sharing.</a>\n<a target='_blank' href=https://www.storylineonline.net/books/the-coal-thief/>A read aloud of a story about breaking the rules.</a>\n<a target='_blank' href=https://www.storylineonline.net/books/carlas-sandwich/>A read aloud of a story about name calling.</a>"
+                    },
+                    {
+                        "title": "Compensation:",
+                        "text": "To thank you for your participation, we'll be emailing you a $5 Amazon gift card - this should arrive in your inbox within the next week after we confirm your consent video and check that your child is in the age range for this study (If you don't hear from us by then, feel free to reach out!). If you participate again with another child in the age range, you'll receive one gift card per child."
+                    },
+                    {
+                        "title": "Questions or Concerns:",
+                        "text": "Please do not hesitate to contact Andrina Template at andrina.template@lookit.edu."
+                    }
+                ]
+            }
+        },
+        "video-config": {
+            "kind": "exp-video-config",
+            "troubleshootingIntro": "If you're having any trouble or would like us to walk you through setup, please email andrina.template@lookit.edu."
+        },
+        "story-alldone": {
+            "kind": "exp-lookit-images-audio",
+            "audio": "alldone",
+            "images": [
+                {
+                    "id": "alldone",
+                    "src": "alldone.jpg",
+                    "position": "fill"
+                }
+            ],
+            "baseDir": "https://raw.githubusercontent.com/lookit/template-study-stim/master/bothright/",
+            "audioTypes": [
+                "mp3"
+            ],
+            "parentTextBlock": {
+                "emph": true,
+                "css": {
+                    "font-size": "13pt",
+                    "padding": "0.5em"
+                },
+                "text": "That's the end of the study! If you want to talk to your child about their answers, you can by clicking the links on the last page. Whenever you're ready, click 'Next' to finish up.",
+                "title": "Parents!"
+            },
+            "showPreviousButton": false,
+            "allowUserPause": false,
+            "waitForRecordingMessageColor": "black"
+        },
+        "roadmap-5": {
+            "kind": "exp-lookit-text",
+            "blocks": [
+                {
+                    "text": "You're all done! The last page will have some links to follow if you would like to discuss any of the topics further with your child.",
+                    "image": {
+                        "alt": "Signpost image",
+                        "src": "https://raw.githubusercontent.com/lookit/template-study-stim/master/bothright/img/arrows/5.png"
+                    },
+                    "title": ""
+                }
+            ],
+            "showPreviousButton": true
+        },
+        "video-consent": {
+            "gdpr": false,
+            "kind": "exp-lookit-video-consent",
+            "PIName": "Andrina Template",
+            "datause": "The researchers and study staff follow federal and state laws to protect your privacy, so all of your information and research records will be kept confidential. The only exception to these procedures for maintaining confidentiality is that we are required by law to report to the appropriate authorities suspicion of harm to your child or to others. More information on how we keep your videos and data private can be found at lookit.mit.edu/faq.",
+            "payment": "There are no costs to participating. There are also no known risks associated with this study beyond those of everyday life. Although this study will not benefit your child directly, it will add to our understanding of how children think in general. If indicated in the study description, you may be compensated for participating in this study; if this is not stated in the study description, then you will not receive any payment for your participation.",
+            "purpose": "The goal of this study is to investigate how people think about the social world from early childhood into adulthood. We are interested in how children and adults learn about and evaluate different people or groups that they might encounter. All typically developing children who speak English and are in the appropriate age range are welcome to participate, and data are being collected all over the greater New York City region and online.",
+            "template": "consent_002",
+            "PIContact": "Andrina Template at andrina.template@lookit.edu, 215 Template Ave., Boston, MA 10016",
+            "procedures": "If your child participates, on the screen, they will see puppet shows, pictures, or short stories involving people, animals, or objects, and they will be asked to respond. For example, your child may be asked if the things someone did were nice or mean, or they might be asked to predict how someone is going to act. Your child will be randomly assigned to a condition of the study. This study has been designed to be appropriate and fun for young children.",
+            "institution": "Yeshiva University",
+            "research_rights_statement": "The Institutional Review Board (IRB) of the Albert Einstein College of Medicine and Montefiore Medical Center has approved this research study. If you have questions regarding your rights as a research subject you may contact the IRB office at 757-233-4555, by email at irb@einstein.lookit.edu, or by mail at Albert Einstein College of Medicine, 1300 Template Ave., Boston, MA 10016."
+        },
+        "roadmap-1": {
+            "kind": "exp-lookit-text",
+            "blocks": [
+                {
+                    "text": "Below is the image you'll be seeing to show you where you're at and what the next step is throughout the study. To start, you will go through the instructions then complete a quick quiz to ensure your understanding of them.",
+                    "image": {
+                        "alt": "Signpost image",
+                        "src": "https://raw.githubusercontent.com/lookit/template-study-stim/master/bothright/img/arrows/1.png"
+                    },
+                    "title": "Road Map"
+                }
+            ],
+            "showPreviousButton": true
+        },
+        "final-instructions1": {
+            "kind": "exp-lookit-instructions",
+            "blocks": [
+                {
+                    "text": "The study will take 5-10 minutes to complete. After that, you will be able to select a level of privacy for your data. To ensure that everything goes smoothly, please close other browser tabs and windows now."
+                },
+                {
+                    "title": "Study overview",
+                    "listblocks": [
+                        {
+                            "text": "Your child is going to answer some questions. Some of the questions might be about children doing mean things (like hitting), and some of them might be about children doing nice things (like sharing)."
+                        },
+                        {
+                            "text": "For each question, you and your child will see some pictures and hear the question, then your child should answer - they can do this by clicking their choice, or by telling you their choice and having you click for them."
+                        },
+                        {
+                            "text": "You can click through to the next question after your child has answered."
+                        }
+                    ]
+                }
+            ],
+            "mustPlay": false,
+            "showWebcam": false,
+            "nextButtonText": "Next"
+        },
+        "final-instructions2": {
+            "kind": "exp-lookit-instructions",
+            "blocks": [
+                {
+                    "title": "Remember: There are no wrong answers! We're interested in how children think about these questions, which may be different from how adults think about them. We'll need your help!",
+                    "listblocks": [
+                        {
+                            "text": "It's important not to 'give away' any of your own thoughts about the answers-- you can say 'Okay!', but not 'That's right!' or 'Hmm, are you sure?'"
+                        },
+                        {
+                            "text": "It's natural to want to interact about the story and questions, but please hold discussion until the end of the study."
+                        },
+                        {
+                            "text": "If your child gets distracted for a bit, that's fine - please just encourage them to keep watching and listening."
+                        },
+                        {
+                            "text": "If your child doesn't answer a question right away, you can encourage them to answer - just don't tell them what you think the answer is. You can also replay the question with the 'Replay' button."
+                        }
+                    ]
+                },
+                {
+                    "text": "Before starting, make sure your audio is working.",
+                    "title": "Test your audio",
+                    "mediaBlock": {
+                        "text": "You should hear 'Ready to go!'",
+                        "isVideo": false,
+                        "sources": [
+                            {
+                                "src": "https://raw.githubusercontent.com/lookit/template-study-stim/master/bothright/mp3/ready.mp3",
+                                "type": "audio/mp3"
+                            }
+                        ],
+                        "mustPlay": true,
+                        "warningText": "Please try playing the sample audio."
+                    }
+                }
+            ],
+            "mustPlay": false,
+            "nextButtonText": "Next"
+        },
+        "roadmap-2": {
+            "kind": "exp-lookit-text",
+            "blocks": [
+                {
+                    "text": "Great job! Now it's time to get into position and practice what you'll see during the study.",
+                    "image": {
+                        "alt": "Signpost image",
+                        "src": "https://raw.githubusercontent.com/lookit/template-study-stim/master/bothright/img/arrows/2.png"
+                    },
+                    "title": "Road Map"
+                }
+            ],
+            "showPreviousButton": true
+        },
+        "positioning": {
+            "kind": "exp-video-config-quality",
+            "title": "Positioning",
+            "introText": "It's time to get your child & check yourself out!",
+            "showRecordMenu": false,
+            "requireTestVideo": false,
+            "completedItemText": "Got it!",
+            "instructionBlocks": [
+                {
+                    "text": "You and your child can sit in any position.",
+                    "title": "Get comfortable"
+                },
+                {
+                    "text": "Go ahead and get settled and use the webcam preview to make sure your child’s whole face and torso are in view.",
+                    "title": "Take a few moments"
+                },
+                {
+                    "text": "Press the 'Next' button down below if you and your child are in position and ready to go.",
+                    "title": "When you're ready"
+                }
+            ],
+            "nextButtonText": "My child and I are in position and ready to start!",
+            "showPreviousButton": true,
+            "requireItemConfirmation": true,
+            "recordingInstructionText": ""
+        },
+        "roadmap-3": {
+            "kind": "exp-lookit-text",
+            "blocks": [
+                {
+                    "text": "You're in position with your child and ready to practice what you'll see during the study.",
+                    "image": {
+                        "alt": "Signpost image",
+                        "src": "https://raw.githubusercontent.com/lookit/template-study-stim/master/bothright/img/arrows/3.png"
+                    },
+                    "title": "Road Map"
+                }
+            ],
+            "showPreviousButton": true
+        },
+        "question-style-instructions": {
+            "kind": "exp-lookit-survey",
+            "formSchema": {
+                "schema": {
+                    "type": "object",
+                    "title": "Instruction Quiz",
+                    "properties": {
+                        "feedback": {
+                            "enum": [
+                                "Okay!",
+                                "Hmm, I don't think so.",
+                                "Are you sure?"
+                            ],
+                            "type": "string",
+                            "title": "Which of these can you say after your child answers a question?",
+                            "disallow": [
+                                "Hmm, I don't think so.",
+                                "Are you sure?"
+                            ],
+                            "required": true
+                        },
+                        "stopping": {
+                            "enum": [
+                                "Yes, I can press F1 or ctrl-X or close the tab at any time.",
+                                "No, I must complete the full study."
+                            ],
+                            "type": "string",
+                            "title": "Is it ok to stop the study early?",
+                            "disallow": [
+                                "No, I must complete the full study."
+                            ],
+                            "required": true
+                        },
+                        "encourage": {
+                            "enum": [
+                                "Encourage them to answer without providing feedback.",
+                                "Point them towards one of the answers."
+                            ],
+                            "type": "string",
+                            "title": "What should you do if your child doesn't answer a question right away?",
+                            "disallow": [
+                                "Point them towards one of the answers."
+                            ],
+                            "required": true
+                        },
+                        "discussion": {
+                            "enum": [
+                                "After they answer each question.",
+                                "Using the discussion prompts at the end of the study.",
+                                "During the stories they hear."
+                            ],
+                            "type": "string",
+                            "title": "When is the right time to discuss the topics covered in the study with your child?",
+                            "disallow": [
+                                "After they answer each question.",
+                                "During the stories they hear."
+                            ],
+                            "required": true
+                        }
+                    }
+                },
+                "options": {
+                    "fields": {
+                        "feedback": {
+                            "type": "radio",
+                            "message": "Try again",
+                            "validator": "required-field",
+                            "showMessages": false
+                        },
+                        "stopping": {
+                            "type": "radio",
+                            "message": "Try again",
+                            "validator": "required-field",
+                            "showMessages": false
+                        },
+                        "encourage": {
+                            "type": "radio",
+                            "message": "Try again",
+                            "validator": "required-field",
+                            "showMessages": false
+                        },
+                        "discussion": {
+                            "type": "radio",
+                            "message": "Try again",
+                            "validator": "required-field",
+                            "showMessages": false
+                        }
+                    }
+                }
+            },
+            "nextButtonText": "Next"
+        }
+    },
+    "sequence": [
+        "alltrials"
+    ]
+}
